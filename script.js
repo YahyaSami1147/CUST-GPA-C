@@ -7,7 +7,7 @@ let subjectCount = 1;
       container.innerHTML = `
         <div class="subject-row" id="subject-row-0">
           <input type="text" placeholder="Subject Name" id="subject0">
-          <input type="number" placeholder="Credit Hours" min="1" id="credits0">
+          <input type="number" placeholder="CH" min="1" id="credits0">
           <div id="category-container0"></div>
           <button class="add-category-btn" onclick="addCategory()">Add Category</button>
           <button class="remove-category-btn" onclick="removeCategory(0)">Remove</button>
