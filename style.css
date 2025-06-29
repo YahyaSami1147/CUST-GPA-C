@@ -163,7 +163,7 @@
       background: rgba(236, 240, 241, 0.37);
     }
     footer {
-      margin-top: 0.5rem;
+      margin-top: auto;
       text-align: center;
       color: #2c3e50;
       font-size: clamp(0.6rem, 1.5vw, 0.7rem);
