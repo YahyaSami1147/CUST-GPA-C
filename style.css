@@ -1,208 +1,221 @@
- body {
-      font-family: 'Arial', sans-serif;
-      max-width: 90%;
-      margin: 0 auto;
-      padding: 2vw;
-      background: url('https://tasjeel.cust.edu.pk/aarsol_custom_loginpage/static/img/cust_bg.jpg') no-repeat center center fixed;
-      background-size: cover;
-      color: #333;
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      align-items: center;
+      padding: 0.5rem;
+      background: url('https://tasjeel.cust.edu.pk/aarsol_custom_loginpage/static/img/cust_bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
     }
     h1 {
       text-align: center;
       color: #2c3e50;
-      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      margin: 0.5rem 0;
       text-transform: uppercase;
-      letter-spacing: 0.15rem;
-      animation: fadeInDown 1s ease-in-out;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      letter-spacing: 0.1rem;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
     }
-    .header {
-      padding: 1.5vw;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
-      margin-bottom: 2vw;
-    }
-    .subject-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1vw;
-      margin-bottom: 1.5vw;
-      background: rgba(255, 255, 255, 0.7);
-      padding: 1vw;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      animation: slideIn 0.5s ease-out;
-    }
-    .input-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5vw;
-    }
-    input, select, button {
-      padding: 0.8rem;
-      font-size: clamp(0.9rem, 2vw, 1rem);
-      border: 1px solid rgba(221, 221, 221, 0.7);
-      border-radius: 4px;
-      transition: all 0.3s ease;
-      background: rgba(255, 255, 255, 0.9);
-      color: #2c3e50;
+    .container {
+      max-width: 700px;
       width: 100%;
-      box-sizing: border-box;
+      background: rgba(0, 0, 0, 0); /* More transparent */
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0);
     }
-    input:focus, select:focus {
-      border-color: #e74c3c;
-      box-shadow: 0 0 5px rgba(231, 76, 60, 0.5);
-      outline: none;
-    }
-    button {
-      padding: 0.8rem 1.5rem;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-      transition: transform 0.2s, background 0.3s;
-      font-weight: bold;
-      width: auto;
-      margin: 0.5vw;
-    }
-    #addCategory, #addSubject {
-      background: linear-gradient(45deg, #8e44ad, #9b59b6);
-      color: white;
-    }
-    #addCategory:hover, #addSubject:hover {
-      transform: scale(1.05);
-      background: linear-gradient(45deg, #9b59b6, #7d3c98);
-    }
-    #calculateGPA {
-      background: linear-gradient(45deg, #e74c3c, #c0392b);
-      color: white;
-      margin:“2vw auto;
-      display: block;
-    }
-    #calculateGPA:hover {
-      transform: scale(1.05);
-      background: linear-gradient(45deg, #c0392b, #a93226);
-    }
-    #result {
-      margin-top: 2vw;
-      font-size: clamp(1.2rem, 3vw, 1.5rem);
-      font-weight: bold;
-      color: #000000;
-      text-align: center;
-      animation: bounceIn 1s ease-out;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-      padding: 1vw;
-      background: rgba(5, 185, 17, 0.628);
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-    .toggle, .subject-select {
-      margin-bottom: 1.5vw;
-      text-align: center;
+    .toggle {
       display: flex;
       justify-content: center;
-      gap: 1vw;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
       flex-wrap: wrap;
     }
     .toggle label {
       display: flex;
       align-items: center;
-      gap: 0.5vw;
-      background: #ffffff;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      gap: 0.3rem;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 0.3rem 0.8rem;
+      border-radius: 6px;
+      font-size: clamp(0.7rem, 1.6vw, 0.8rem);
       cursor: pointer;
-      font-size: clamp(0.9rem, 2vw, 1rem);
+      transition: background 0.3s;
     }
     .toggle input[type="checkbox"] {
-      width: 1.2rem;
-      height: 1.2rem;
+      width: 0.9rem;
+      height: 0.9rem;
       accent-color: #e74c3c;
       cursor: pointer;
     }
-    .grading-table {
-      margin-top: 2vw;
-      background: rgba(255, 255, 255, 0.7);
-      padding: 1.5vw;
+    .subject-select {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.3rem;
+      margin-bottom: 0.5rem;
+    }
+    .subject-select label {
+      font-size: clamp(0.7rem, 1.6vw, 0.8rem);
+      color: #2c3e50;
+    }
+    select, input {
+      padding: 0.3rem;
+      font-size: clamp(0.6rem, 1.5vw, 0.7rem);
+      border: 1px solid rgba(221, 221, 221, 0.7);
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.8);
+      color: #2c3e50;
+      transition: all 0.2s;
+    }
+    input[type="number"] {
+      width: 60px; /* Even smaller for numbers */
+    }
+    input[type="text"] {
+      width: 120px; /* Smaller for text */
+    }
+    select {
+      width: 80px; /* Smaller for dropdowns */
+    }
+    input:focus, select:focus {
+      border-color: #e74c3c;
+      outline: none;
+      box-shadow: 0 0 4px rgba(231, 76, 60, 0.3);
+    }
+    .subject-row {
+      background: rgba(255, 255, 255, 0.847);
+      padding: 0.5rem;
       border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      animation: fadeInUp 1s ease-in-out;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      flex-wrap: wrap;
+    }
+    .input-group {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      flex-wrap: wrap;
+    }
+    button {
+      background: linear-gradient(45deg, #e74c3c, #c0392b);
+      color: white;
+      border: none;
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: clamp(0.6rem, 1.5vw, 0.7rem);
+      transition: transform 0.2s, background 0.3s;
+      width: fit-content;
+    }
+    button:hover {
+      transform: scale(1.05);
+      background: linear-gradient(45deg, #c0392b, #a93226);
+    }
+    #addCategory, #addSubject, .add-category-btn {
+      background: linear-gradient(45deg, #8e44ad, #9b59b6);
+    }
+    #addCategory:hover, #addSubject:hover, .add-category-btn:hover {
+      background: linear-gradient(45deg, #9b59b6, #7d3c98);
+    }
+    .remove-category-btn {
+      background: linear-gradient(45deg, #e67e22, #d35400);
+    }
+    .remove-category-btn:hover {
+      background: linear-gradient(45deg, #d35400, #e67e22);
+    }
+    .add-category-btn, .remove-category-btn {
+      margin-left: auto;
+      margin-right: 0.3rem;
+    }
+    #addCategory {
+      display: none; /* Hidden as per-subject buttons are used */
+    }
+    #calculateGPA {
+      display: block;
+      margin: 0.5rem auto;
+    }
+    #result {
+      margin: 0.5rem 0;
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
+      font-weight: bold;
+      color: #2c3e50;
+      text-align: center;
+      padding: 0.5rem;
+      background: rgba(5, 185, 17, 0.65);
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .grading-table {
+      margin-top: 0.5rem;
+      background: rgba(255, 255, 255, 0.591);
+      padding: 0.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 1vw;
+      font-size: clamp(0.6rem, 1.5vw, 0.7rem);
     }
     th, td {
-      border: 1px solid rgba(221, 221, 221, 0.7);
-      padding: 0.8rem;
+      border: 1px solid rgba(221, 221, 221, 0.1);
+      padding: 0.3rem;
       text-align: center;
-      font-size: clamp(0.8rem, 1.8vw, 0.9rem);
     }
     th {
-      background-color: #e74c3c;
+      background: #e74c3c;
       color: white;
+      font-size: clamp(0.7rem, 1.6vw, 0.8rem);
     }
     td {
-      background-color: rgba(236, 240, 241, 0.7);
+      background: rgba(236, 240, 241, 0.5);
     }
     footer {
-      margin-top: 2vw;
+      margin-top: 0.5rem;
       text-align: center;
       color: #2c3e50;
-      font-size: clamp(0.8rem, 1.8vw, 0.9rem);
-      padding: 1vw;
-      background: rgba(255, 255, 255, 0.7);
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      animation: fadeInUp 1s ease-in-out;
+      font-size: clamp(0.6rem, 1.5vw, 0.7rem);
+      padding: 0.3rem;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 6px;
+      width: 100%;
+      max-width: 700px;
     }
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateX(-20px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes bounceIn {
-      0% { transform: scale(0.5); opacity: 0; }
-      50% { transform: scale(1.05); opacity: 1; }
-      100% { transform: scale(1); }
-    }
-    @media (max-width: 768px) {
+    @media (max-width: 600px) {
+      .container {
+        padding: 0.8rem;
+      }
+      h1 {
+        font-size: clamp(1rem, 3vw, 1.3rem);
+      }
+      select, input {
+        max-width: 100%;
+      }
+      .toggle {
+        flex-direction: column;
+        gap: 0.3rem;
+      }
       .subject-row {
         flex-direction: column;
+        align-items: stretch;
       }
-      button {
-        width: 100%;
-        margin: 0.5vw 0;
-      }
-      .toggle label {
-        width: 100%;
-        justify-content: center;
+      .add-category-btn, .remove-category-btn {
+        margin-left: 0;
+        margin-top: 0.3rem;
       }
     }
     @media (min-width: 1200px) {
-      body {
-        max-width: 1000px;
-      }
-    }
-    @media (min-width: 1920px) {
-      body {
-        max-width: 1200px;
-      }
-      h1 {
-        font-size: 3rem;
-      }
-      input, select, button {
-        font-size: 1.2rem;
+      .container {
+        max-width: 800px;
       }
     }
