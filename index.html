@@ -3,57 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="style.css">
 
-  <title>Capital University of Science and Technology GPA Calculator</title>
- 
-   
+  <title>GPA Calculator</title>
+  
 </head>
 <body>
-  <div class="header">
-    <h1>Capital University of Science and Technology GPA Calculator</h1>
+  <h1>Capital University Of Science and Technology GPA Calculator</h1>
+  <div class="container">
+    <div class="toggle">
+      <label><input type="checkbox" id="useDirectMarks" onchange="toggleMode()"> Calculate with Total Marks</label>
+      <label><input type="checkbox" id="useGradeLetters" onchange="toggleMode()" checked> Calculate with Grade Letter</label>
+    </div>
+    <div class="subject-select">
+      <label>Select Subject:</label>
+      <select id="subjectSelect" onchange="selectSubject(this.value)">
+        <option value="0">Subject 1</option>
+      </select>
+    </div>
+    <div id="subject-container"></div>
+    <button id="addSubject" onclick="addSubject()">Add Subject</button>
+    <button id="addCategory" onclick="addCategory()">Add Category</button>
+    <button id="calculateGPA" onclick="calculateGPA()">Calculate GPA</button>
+    <div id="result"></div>
+    <div class="grading-table">
+      <h2>Grading Criteria</h2>
+      <table>
+        <tr>
+          <th>Marks</th>
+          <th>Letter Grades</th>
+          <th>Grade Points</th>
+          <th>Academic Standing</th>
+        </tr>
+        <tr><td>86-100%</td><td>A</td><td>4.00</td><td>Excellent</td></tr>
+        <tr><td>82-85%</td><td>A-</td><td>3.67</td><td>-</td></tr>
+        <tr><td>78-81%</td><td>B+</td><td>3.33</td><td>Good</td></tr>
+        <tr><td>74-77%</td><td>B</td><td>3.00</td><td>-</td></tr>
+        <tr><td>70-73%</td><td>B-</td><td>2.67</td><td>-</td></tr>
+        <tr><td>66-69%</td><td>C+</td><td>2.33</td><td>Satisfactory</td></tr>
+        <tr><td>62-65%</td><td>C</td><td>2.00</td><td>-</td></tr>
+        <tr><td>58-61%</td><td>C-</td><td>1.67</td><td>-</td></tr>
+        <tr><td>54-57%</td><td>D+</td><td>1.33</td><td>Poor but passing</td></tr>
+        <tr><td>50-53%</td><td>D</td><td>1.00</td><td>-</td></tr>
+        <tr><td>Below 50%</td><td>F</td><td>0.00</td><td>Fail</td></tr>
+      </table>
+    </div>
+    <footer>
+      © 2025 Yahya Sami - BSE233114. All rights reserved.
+    </footer>
   </div>
-  <div class="toggle">
-    <label><input type="checkbox" id="useDirectMarks" onchange="toggleMode()"> Calculate with Marks</label>
-    <label><input type="checkbox" id="useGradeLetters" onchange="toggleMode()" checked> Calculate with Grade Letters</label>
-  </div>
-  <div class="subject-select">
-    <label>Select Subject: </label>
-    <select id="subjectSelect" onchange="selectSubject(this.value)">
-      <option value="0">Subject 0</option>
-    </select>
-  </div>
-  <div id="subject-container"></div>
-  <button id="addSubject" onclick="addSubject()">Add Subject</button>
-  <button id="addCategory" onclick="addCategory()">Add Category</button>
-  <button id="calculateGPA" onclick="calculateGPA()">Calculate GPA</button>
-  <div id="result"></div>
-  <div class="grading-table">
-    <h2>Grading Criteria</h2>
-    <table>
-      <tr>
-        <th>Marks</th>
-        <th>Letter Grades</th>
-        <th>Grade Points</th>
-        <th>Academic Standing</th>
-      </tr>
-      <tr><td>86-100%</td><td>A</td><td>4.00</td><td>Excellent</td></tr>
-      <tr><td>82-85%</td><td>A-</td><td>3.67</td><td>-</td></tr>
-      <tr><td>78-81%</td><td>B+</td><td>3.33</td><td>Good</td></tr>
-      <tr><td>74-77%</td><td>B</td><td>3.00</td><td>-</td></tr>
-      <tr><td>70-73%</td><td>B-</td><td>2.67</td><td>-</td></tr>
-      <tr><td>66-69%</td><td>C+</td><td>2.33</td><td>Satisfactory</td></tr>
-      <tr><td>62-65%</td><td>C</td><td>2.00</td><td>-</td></tr>
-      <tr><td>58-61%</td><td>C-</td><td>1.67</td><td>-</td></tr>
-      <tr><td>54-57%</td><td>D+</td><td>1.33</td><td>Poor but passing</td></tr>
-      <tr><td>50-53%</td><td>D</td><td>1.00</td><td>-</td></tr>
-      <tr><td>Below 50%</td><td>F</td><td>0.00</td><td>Fail</td></tr>
-    </table>
-  </div>
-  <footer>
-    © 2025 Yahya Sami - BSE233114. All rights reserved.
-  </footer>
-      <script src="script.js"></script>
+       <script src="script.js"></script>
 
 </body>
 </html>
