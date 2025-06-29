@@ -77,7 +77,7 @@ let subjectCount = 1;
       div.id = `subject-row-${subjectCount}`;
       div.innerHTML = `
         <input type="text" placeholder="Subject Name" id="subject${subjectCount}">
-        <input type="number" placeholder="Credit Hours" min="1" id="credits${subjectCount}">
+        <input type="number" placeholder="CH" min="1" id="credits${subjectCount}">
         <div id="category-container${subjectCount}"></div>
         <button class="add-category-btn" onclick="addCategory()">Add Category</button>
         <button class="remove-category-btn" onclick="removeCategory(${subjectCount})">Remove</button>
