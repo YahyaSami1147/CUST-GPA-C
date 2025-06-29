@@ -1,5 +1,4 @@
 let subjectCount = 1;
-    let currentSubject = 0;
     let categoryCounts = {};
 
     function initializeSubjects() {
@@ -9,8 +8,8 @@ let subjectCount = 1;
           <input type="text" placeholder="Subject Name" id="subject0">
           <input type="number" placeholder="CH" min="1" id="credits0">
           <div id="category-container0"></div>
-          <button class="add-category-btn" onclick="addCategory()">Add Category</button>
-          <button class="remove-category-btn" onclick="removeCategory(0)">Remove</button>
+          <button class="add-category-btn" id="addCategory0" onclick="addCategory(0)">Add Category</button>
+          <button class="remove-category-btn" id="removeCategory0" onclick="removeCategory(0)" style="display: none;">Remove</button>
         </div>
       `;
       categoryCounts[0] = 0;
@@ -31,10 +30,10 @@ let subjectCount = 1;
 
       for (let i = 0; i < subjectCount; i++) {
         const container = document.getElementById(`category-container${i}`);
-        const addCategoryButton = document.querySelector(`#subject-row-${i} .add-category-btn`);
-        const removeCategoryButton = document.querySelector(`#subject-row-${i} .remove-category-btn`);
+        const addCategoryButton = document.getElementById(`addCategory${i}`);
+        const removeCategoryButton = document.getElementById(`removeCategory${i}`);
         if (useDirect.checked && container) {
-          container.innerHTML = `<input type="number" placeholder="Marks (%)" min="0" max="100" id="directMarks${i}">`;
+          container.innerHTML = `<input type="number" placeholder="%" min="0" max="100" id="directMarks${i}">`;
           addCategoryButton.style.display = 'none';
           removeCategoryButton.style.display = 'none';
         } else if (useGradeLetters.checked && container) {
@@ -65,11 +64,6 @@ let subjectCount = 1;
       }
     }
 
-    function selectSubject(index) {
-      currentSubject = parseInt(index);
-      toggleMode();
-    }
-
     function addSubject() {
       const container = document.getElementById('subject-container');
       const div = document.createElement('div');
@@ -79,44 +73,44 @@ let subjectCount = 1;
         <input type="text" placeholder="Subject Name" id="subject${subjectCount}">
         <input type="number" placeholder="CH" min="1" id="credits${subjectCount}">
         <div id="category-container${subjectCount}"></div>
-        <button class="add-category-btn" onclick="addCategory()">Add Category</button>
-        <button class="remove-category-btn" onclick="removeCategory(${subjectCount})">Remove</button>
+        <button class="add-category-btn" id="addCategory${subjectCount}" onclick="addCategory(${subjectCount})">Add Category</button>
+        <button class="remove-category-btn" id="removeCategory${subjectCount}" onclick="removeCategory(${subjectCount})" style="display: none;">Remove</button>
       `;
       container.appendChild(div);
-      const select = document.getElementById('subjectSelect');
-      select.innerHTML += `<option value="${subjectCount}">Subject ${subjectCount + 1}</option>`;
-      currentSubject = subjectCount;
-      select.value = currentSubject;
       categoryCounts[subjectCount] = 0;
       subjectCount++;
       toggleMode();
     }
 
-    function addCategory() {
-      const container = document.getElementById(`category-container${currentSubject}`);
+    function addCategory(subjectIndex) {
+      const container = document.getElementById(`category-container${subjectIndex}`);
       if (!container) return;
-      const categoryIndex = categoryCounts[currentSubject] || 0;
+      const categoryIndex = categoryCounts[subjectIndex] || 0;
       const div = document.createElement('div');
       div.className = 'input-group category-row';
+      div.id = `category-row-${subjectIndex}-${categoryIndex}`;
       div.innerHTML = `
-        <input type="text" placeholder="Category (e.g., Quiz)" id="categoryName${currentSubject}_${categoryIndex}">
-        <input type="number" placeholder="%" min="0" max="100" id="categoryPercent${currentSubject}_${categoryIndex}">
-        <input type="number" placeholder="Weight (%)" min="0" max="100" id="categoryWeight${currentSubject}_${categoryIndex}">
+        <input type="text" placeholder="Category (e.g., Quiz)" id="categoryName${subjectIndex}_${categoryIndex}">
+        <input type="number" placeholder="%" min="0" max="100" id="categoryPercent${subjectIndex}_${categoryIndex}">
+        <input type="number" placeholder="Weight (%)" min="0" max="100" id="categoryWeight${subjectIndex}_${categoryIndex}">
       `;
       container.appendChild(div);
-      categoryCounts[currentSubject] = categoryIndex + 1;
-      toggleMode(); // Update button visibility
+      categoryCounts[subjectIndex] = categoryIndex + 1;
+      document.getElementById(`removeCategory${subjectIndex}`).style.display = 'inline-block';
     }
 
     function removeCategory(subjectIndex) {
-      const container = document.getElementById(`category-container${subjectIndex}`);
-      if (!container || categoryCounts[subjectIndex] === 0) return;
-      const categoryIndex = categoryCounts[subjectIndex] - 1;
-      const categoryRow = container.querySelector(`#categoryName${subjectIndex}_${categoryIndex}`)?.parentElement;
-      if (categoryRow) {
-        container.removeChild(categoryRow);
-        categoryCounts[subjectIndex]--;
-        toggleMode(); // Update button visibility
+      const categoryCount = categoryCounts[subjectIndex] || 0;
+      if (categoryCount > 0) {
+        const container = document.getElementById(`category-container${subjectIndex}`);
+        const lastCategory = document.getElementById(`category-row-${subjectIndex}-${categoryCount - 1}`);
+        if (lastCategory) {
+          container.removeChild(lastCategory);
+          categoryCounts[subjectIndex]--;
+          if (categoryCounts[subjectIndex] === 0) {
+            document.getElementById(`removeCategory${subjectIndex}`).style.display = 'none';
+          }
+        }
       }
     }
 
@@ -138,9 +132,12 @@ let subjectCount = 1;
       return 0.00;
     }
 
-    function getGradePointFromLetter(letter) {
-      const gradePoints = { 'A': 4.00, 'A-': 3.67, 'B+': 3.33, 'B': 3.00, 'B-': 2.67, 'C+': 2.33, 'C': 2.00, 'C-': 1.67, 'D+': 1.33, 'D': 1.00, 'F': 0.00 };
-      return gradePoints[letter] || 0.00;
+    function getGradePointFromLetter(grade) {
+      const gradePoints = {
+        'A': 4.00, 'A-': 3.67, 'B+': 3.33, 'B': 3.00, 'B-': 2.67,
+        'C+': 2.33, 'C': 2.00, 'C-': 1.67, 'D+': 1.33, 'D': 1.00, 'F': 0.00
+      };
+      return gradePoints[grade] || 0.00;
     }
 
     function calculateGPA() {
