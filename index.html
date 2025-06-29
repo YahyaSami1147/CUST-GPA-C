@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="style.css">
-
   <title>Capital University of Science and Technology GPA Calculator</title>
+ 
+   
 </head>
 <body>
   <div class="header">
     <h1>Capital University of Science and Technology GPA Calculator</h1>
   </div>
   <div class="toggle">
-    <label><input type="checkbox" id="useDirectMarks" onchange="toggleMode()"> Use Direct Marks Entry</label>
-    <label><input type="checkbox" id="useGradeLetters" onchange="toggleMode()"> Use Grade Letters Entry</label>
+    <label><input type="checkbox" id="useDirectMarks" onchange="toggleMode()"> Calculate with Marks</label>
+    <label><input type="checkbox" id="useGradeLetters" onchange="toggleMode()" checked> Calculate with Grade Letters</label>
   </div>
   <div class="subject-select">
     <label>Select Subject: </label>
@@ -23,14 +23,9 @@
   </div>
   <div id="subject-container"></div>
   <button id="addSubject" onclick="addSubject()">Add Subject</button>
-  <button id="addQuiz" onclick="addCategory('quiz')">Add Quiz</button>
-  <button id="addAssignment" onclick="addCategory('assignment')">Add Assignment</button>
-  <button id="addProject" onclick="addCategory('project')">Add Project</button>
-  <button id="addMid" onclick="addCategory('mid')">Add Mid Exam</button>
-  <button id="addFinal" onclick="addCategory('final')">Add Final Exam</button>
+  <button id="addCategory" onclick="addCategory()">Add Category</button>
   <button id="calculateGPA" onclick="calculateGPA()">Calculate GPA</button>
   <div id="result"></div>
-
   <div class="grading-table">
     <h2>Grading Criteria</h2>
     <table>
@@ -53,12 +48,8 @@
       <tr><td>Below 50%</td><td>F</td><td>0.00</td><td>Fail</td></tr>
     </table>
   </div>
-
   <footer>
     © 2025 Yahya Sami - BSE233114. All rights reserved.
   </footer>
-
-    <script src="script.js"></script>
-  
 </body>
 </html>
