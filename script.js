@@ -9,6 +9,8 @@ let subjectCount = 1;
           <input type="text" placeholder="Subject Name" id="subject0">
           <input type="number" placeholder="Credit Hours" min="1" id="credits0">
           <div id="category-container0"></div>
+          <button class="add-category-btn" onclick="addCategory()">Add Category</button>
+          <button class="remove-category-btn" onclick="removeCategory(0)">Remove</button>
         </div>
       `;
       categoryCounts[0] = 0;
@@ -27,11 +29,14 @@ let subjectCount = 1;
         }
       }
 
-      const addCategoryButton = document.getElementById('addCategory');
       for (let i = 0; i < subjectCount; i++) {
         const container = document.getElementById(`category-container${i}`);
+        const addCategoryButton = document.querySelector(`#subject-row-${i} .add-category-btn`);
+        const removeCategoryButton = document.querySelector(`#subject-row-${i} .remove-category-btn`);
         if (useDirect.checked && container) {
           container.innerHTML = `<input type="number" placeholder="Marks (%)" min="0" max="100" id="directMarks${i}">`;
+          addCategoryButton.style.display = 'none';
+          removeCategoryButton.style.display = 'none';
         } else if (useGradeLetters.checked && container) {
           container.innerHTML = `
             <select id="gradeLetter${i}">
@@ -48,15 +53,16 @@ let subjectCount = 1;
               <option value="F">F</option>
             </select>
           `;
+          addCategoryButton.style.display = 'none';
+          removeCategoryButton.style.display = 'none';
         } else if (!useDirect.checked && !useGradeLetters.checked && container) {
           if (!container.querySelector('.category-row')) {
             container.innerHTML = '';
           }
+          addCategoryButton.style.display = 'inline-block';
+          removeCategoryButton.style.display = categoryCounts[i] > 0 ? 'inline-block' : 'none';
         }
       }
-
-      addCategoryButton.style.display = (!useDirect.checked && !useGradeLetters.checked) ? 'inline-block' : 'none';
-      document.querySelectorAll('.category-row').forEach(row => row.style.display = (!useDirect.checked && !useGradeLetters.checked) ? 'flex' : 'none');
     }
 
     function selectSubject(index) {
@@ -73,10 +79,12 @@ let subjectCount = 1;
         <input type="text" placeholder="Subject Name" id="subject${subjectCount}">
         <input type="number" placeholder="Credit Hours" min="1" id="credits${subjectCount}">
         <div id="category-container${subjectCount}"></div>
+        <button class="add-category-btn" onclick="addCategory()">Add Category</button>
+        <button class="remove-category-btn" onclick="removeCategory(${subjectCount})">Remove</button>
       `;
       container.appendChild(div);
       const select = document.getElementById('subjectSelect');
-      select.innerHTML += `<option value="${subjectCount}">Subject ${subjectCount}</option>`;
+      select.innerHTML += `<option value="${subjectCount}">Subject ${subjectCount + 1}</option>`;
       currentSubject = subjectCount;
       select.value = currentSubject;
       categoryCounts[subjectCount] = 0;
@@ -91,12 +99,25 @@ let subjectCount = 1;
       const div = document.createElement('div');
       div.className = 'input-group category-row';
       div.innerHTML = `
-        <input type="text" placeholder="Category Name (e.g., Quiz , Assignment)" id="categoryName${currentSubject}_${categoryIndex}">
-        <input type="number" placeholder="Percentage (%)" min="0" max="100" id="categoryPercent${currentSubject}_${categoryIndex}">
-        <input type="number" placeholder="Weightage (%)" min="0" max="100" id="categoryWeight${currentSubject}_${categoryIndex}">
+        <input type="text" placeholder="Category (e.g., Quiz)" id="categoryName${currentSubject}_${categoryIndex}">
+        <input type="number" placeholder="%" min="0" max="100" id="categoryPercent${currentSubject}_${categoryIndex}">
+        <input type="number" placeholder="Weight (%)" min="0" max="100" id="categoryWeight${currentSubject}_${categoryIndex}">
       `;
       container.appendChild(div);
       categoryCounts[currentSubject] = categoryIndex + 1;
+      toggleMode(); // Update button visibility
+    }
+
+    function removeCategory(subjectIndex) {
+      const container = document.getElementById(`category-container${subjectIndex}`);
+      if (!container || categoryCounts[subjectIndex] === 0) return;
+      const categoryIndex = categoryCounts[subjectIndex] - 1;
+      const categoryRow = container.querySelector(`#categoryName${subjectIndex}_${categoryIndex}`)?.parentElement;
+      if (categoryRow) {
+        container.removeChild(categoryRow);
+        categoryCounts[subjectIndex]--;
+        toggleMode(); // Update button visibility
+      }
     }
 
     function calculateWeightedMarks(percentage, weight) {
