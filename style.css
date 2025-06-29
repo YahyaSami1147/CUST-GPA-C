@@ -1,0 +1,145 @@
+body {
+      font-family: 'Arial', sans-serif;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      background: url('https://tasjeel.cust.edu.pk/aarsol_custom_loginpage/static/img/cust_bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      font-size: 2.5em;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      animation: fadeInDown 1s ease-in-out;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    .header {
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+    .subject-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      animation: slideIn 0.5s ease-out;
+    }
+    .input-group {
+      display: flex;
+      gap: 5px;
+    }
+    input, select, button {
+      padding: 8px;
+      font-size: 14px;
+      border: 1px solid rgba(221, 221, 221, 0.7);
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.6);
+      color: #2c3e50;
+    }
+    input:focus, select:focus {
+      border-color: #e74c3c;
+      box-shadow: 0 0 5px rgba(231, 76, 60, 0.5);
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: transform 0.2s, background 0.3s;
+      font-weight: bold;
+    }
+    #addQuiz, #addAssignment, #addProject, #addMid, #addFinal, #addSubject {
+      background: linear-gradient(45deg, #8e44ad, #9b59b6);
+      color: white;
+    }
+    #addQuiz:hover, #addAssignment:hover, #addProject:hover, #addMid:hover, #addFinal:hover, #addSubject:hover {
+      transform: scale(1.05);
+      background: linear-gradient(45deg, #9b59b6, #7d3c98);
+    }
+    #calculateGPA {
+      background: linear-gradient(45deg, #e74c3c, #c0392b);
+      color: white;
+      margin-top: 20px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #calculateGPA:hover {
+      transform: scale(1.05);
+      background: linear-gradient(45deg, #c0392b, #a93226);
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #27ae60;
+      text-align: center;
+      animation: bounceIn 1s ease-out;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    }
+    .toggle, .subject-select {
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    .grading-table {
+      margin-top: 20px;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      animation: fadeInUp 1s ease-in-out;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    th, td {
+      border: 1px solid rgba(221, 221, 221, 0.7);
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #e74c3c;
+      color: white;
+    }
+    td {
+      background-color: rgba(236, 240, 241, 0.7);
+    }
+    footer {
+      margin-top: 20px;
+      text-align: center;
+      color: #2c3e50;
+      font-size: 0.9em;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      animation: fadeInUp 1s ease-in-out;
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes bounceIn {
+      0% { transform: scale(0.5); opacity: 0; }
+      50% { transform: scale(1.05); opacity: 1; }
+      100% { transform: scale(1); }
+    }
