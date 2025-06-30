@@ -129,13 +129,13 @@ let subjectCount = 1;
       if (marks >= 58) return 1.67;
       if (marks >= 54) return 1.33;
       if (marks >= 50) return 1.00;
-      return 0.00;
+      return 0.01;
     }
 
     function getGradePointFromLetter(grade) {
       const gradePoints = {
         'A': 4.00, 'A-': 3.67, 'B+': 3.33, 'B': 3.00, 'B-': 2.67,
-        'C+': 2.33, 'C': 2.00, 'C-': 1.67, 'D+': 1.33, 'D': 1.00, 'F': 0.00
+        'C+': 2.33, 'C': 2.00, 'C-': 1.67, 'D+': 1.33, 'D': 1.00, 'F': 0.01
       };
       return gradePoints[grade] || 0.00;
     }
