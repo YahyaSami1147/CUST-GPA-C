@@ -222,7 +222,7 @@
   }
 
   function standingLabel(gpa) {
-    if (gpa >= 3.67) return '🏆 Excellent — Dean\'s List Territory';
+    if (gpa >= 3.5) return '🏆 Excellent - Dean\'s List Territory';
     if (gpa >= 3.00) return '⭐ Good Standing';
     if (gpa >= 2.33) return '📘 Satisfactory';
     if (gpa >= 1.00) return '⚠️ Poor but Passing';
